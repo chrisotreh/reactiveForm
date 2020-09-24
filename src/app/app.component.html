@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="projectName">Project Name</label>
+          <input type="text" id="projectName" class="form-control" formControlName="projectName">
+          <span class="help-block"
+          *ngIf="!signUpForm.get('projectName').valid && signUpForm.get('projectName').touched">
+            Project Name should not be empty
+            <span *ngIf="signUpForm.get('projectName').errors['projectNameIsForbidden']"> Name is invalid</span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="email">email</label>
+          <input type="text" id="email"  class="form-control"  formControlName="email">
+          <span class="help-block"
+          *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched">
+            Please enter a valid email
+          </span>
+        </div>
+        <div class="form-group"  >
+          <label>
+            Project Status 
+            <!-- <input type="radio"[value]="gender" name="gender" formControlName="gender"/>{{gender}} -->
+          </label> 
+          <select name="projectStatus" id="projectStatus" class="form-control" formControlName="projectStatus">
+              <option *ngFor="let status of projectStatus" [value]="status">{{status}}</option>
+          </select>
+        </div> 
+        <div class="form-group"> 
+          <button class="btn btn-primary" type="submit" >Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
